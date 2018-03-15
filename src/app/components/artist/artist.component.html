@@ -1,0 +1,63 @@
+<div class="container top30">
+    <div class="row">
+        <div class="col-md-6">
+            <img [src]="artista.images | sinfoto" class="img-circle" style="width: 22rem;" alt="image">
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center">{{artista.name}}<br><small class="text-muted">{{artista.genres[0]}}</small></h1>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <a [href]="artista.external_urls.spotify" class="btn btn-outline-success btn-block">Abrir intérprete</a>
+                </div>
+                <br>
+                <br>
+                <div class="col-md-6">
+                    <a [routerLink]="['/search']" class="btn btn-outline-danger btn-block">Buscar otro intérprete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container top30">
+    <h1>
+        Top Tracks
+    </h1>
+    <div *ngFor="let tracks of topTracks; let idx = index" class="list-group">
+        <a *ngIf="idx < 5" [href]="tracks.external_urls.spotify" class="bg-dark text-white list-group-item list-group-item-action flex-column align-items-start">
+            <div class="row">
+                <div class="col-md-2">
+                    <img [src]="tracks.album.images | sinfoto" class="rounded" style="width: 8rem;" alt="image">
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">{{tracks.name}} <span class="badge badge-secondary">{{tracks.popularity}}</span></h4>
+                            </div>
+                            <p class="mb-1">{{tracks.album.name}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="float-left">
+                                <!-- domseguro works passing a static url and the track uri -->
+                                <iframe [src]="tracks.uri | domseguro:'https://open.spotify.com/embed?uri='"
+                                        width="350" height="80" frameborder="0" allowtransparency="true">
+                                </iframe>
+                            </div>
+                            <small class="text-muted float-right">{{tracks.duration_ms | minutos}}</small>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <span class="badge badge-danger float-right">{{tracks.explicit | explicit}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <br>
+    </div>
+
+</div>
