@@ -3,6 +3,11 @@
 Simple Angular 2 client for Spotify with main page, search engine and details page for the author getted with a preview song widget and information about album.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
+## Preview captures
+
+![alt text](/detail-page.png?raw=true "detail-page")
+![alt text](/search.png?raw=true "search-page")
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
